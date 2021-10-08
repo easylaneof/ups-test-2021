@@ -1,0 +1,26 @@
+.container {
+  height: 100%;
+  width: 100%;
+}
+
+.bar {
+  height: 100%;
+
+  border-radius: 7px;
+  box-shadow: 0 0 12px #76FFC1;
+  background: repeating-linear-gradient(to right, #5EFF8B 0%, #86FFE2 33%, #5EFF8B 66%);
+  background-size: 300% 300%;
+  animation: gradient 5s infinite alternate ease-in-out;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}

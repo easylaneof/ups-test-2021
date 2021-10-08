@@ -1,0 +1,26 @@
+.container {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.populationHeader {
+  margin-bottom: 30px;
+}
+
+.description {
+  margin-bottom: 70px;
+}
+
+.table {
+  max-width: 75vw;
+}
+
+@media screen and (max-width: 800px) {
+  .table {
+    max-width: 90vw;
+  }
+}
