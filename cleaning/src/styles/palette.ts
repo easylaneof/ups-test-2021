@@ -3,6 +3,8 @@ import { css } from '@emotion/css';
 export const palette = css`
   :root {
     --independence: #4d526b;
+    --text: #8f8c8a;
+    --caption: #a4a8bc;
     --arsenic: #414145;
 
     --white: #ffffff;
@@ -11,10 +13,13 @@ export const palette = css`
 
     --azure-white: #f2eedc;
 
+    --disabled-background: #f6f6fd;
     --ghost-white: #f6f7ff;
     --ice-blue: #edf0ff;
     --lavender: #c6cfff;
+    --periwinkle: #dce0f2;
     --vodka: #bec4fb;
+    --disabled-blue: #9aa9fc;
     --blue: #3656f9;
     --blue-05: rgba(54, 86, 249, 0.5);
 

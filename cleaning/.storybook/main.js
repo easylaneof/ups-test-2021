@@ -6,8 +6,6 @@ module.exports = {
   webpackFinal: async (config) => {
     config.resolve.plugins.push(new TsconfigPathsPlugin({}));
 
-    console.log(config.resolve);
-
     return config;
   },
 };

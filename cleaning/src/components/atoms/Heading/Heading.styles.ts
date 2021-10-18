@@ -2,6 +2,7 @@ import { css } from '@emotion/css';
 
 export const container = css`
   font-family: var(--main-font);
+  margin: 0;
 `;
 
 export const h1 = css`

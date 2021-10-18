@@ -13,4 +13,6 @@ export const container = css`
 export const square = css`
   width: 60px;
   height: 60px;
+
+  border-radius: 15px;
 `;

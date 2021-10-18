@@ -4,23 +4,16 @@ import { Unit } from 'lib/css';
 
 import { IconName } from './Icon.constants';
 
-type Fill = {
-  fill: string;
-  stroke?: string;
-}
-
-type Stroke = {
-  stroke: string;
-  fill?: string;
-}
-
-export type IconProps = (Fill | Stroke) & {
+export type IconProps = {
   name: IconName;
 
   viewBox?: number | [number, number];
 
   width: Unit;
   height?: Unit;
+
+  fill?: string;
+  stroke?: string;
 
   translate?: Unit;
   translateX?: Unit;
