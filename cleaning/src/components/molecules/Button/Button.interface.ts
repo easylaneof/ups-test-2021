@@ -2,12 +2,12 @@ import React from 'react';
 
 type IconProps = any;
 
-export type ButtonShape = 'general' | 'square';
+export type ButtonShape = 'default' | 'square';
 
-export type ButtonContent = 'general' | 'icon' | 'text';
+export type ButtonContent = 'default' | 'icon' | 'text';
 
-type GeneralContent = {
-  content?: 'general';
+type DefaultContent = {
+  content?: 'default';
   children: React.ReactNode;
 };
 
@@ -22,7 +22,7 @@ type TextContent = {
 };
 
 export type ButtonProps = (
-  | GeneralContent
+  | DefaultContent
   | IconContent
   | TextContent
 ) & {

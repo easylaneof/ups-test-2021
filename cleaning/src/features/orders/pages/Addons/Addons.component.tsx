@@ -1,58 +1,95 @@
 import React from 'react';
 
+import { useStore } from 'effector-react';
+
 import { useRouter } from 'next/router';
 
-import { Text } from 'components/atoms/Text';
-import { Icon, IconProps } from 'components/atoms/Icon';
 import { Heading } from 'components/atoms/Heading';
-import { Button } from 'components/molecules/Button';
+import { Header } from 'components/organisms/Header';
+
+import { PriceButton } from '../../molecules/PriceButton';
+import { Addon } from '../../organisms/Addon';
+import { AddonsSection } from '../../templates/AddonsSection';
+
+import {
+  $bathroom,
+  $extra,
+  $kitchen,
+  $pets,
+  $shirtCleaning,
+  setAddonSelected,
+} from '../../addons.model';
+import { $numberOfBathRooms, $numberOfRooms } from '../../flat.model';
+import { $time, $price } from '../../orders.model';
 
 import * as s from './Addons.styles';
-
-const prevIcon: IconProps = {
-  width: 20,
-  viewBox: [10, 20],
-  translateY: 2,
-  name: 'ic_arrow_left',
-};
-
-const infoIcon: IconProps = {
-  width: 20,
-  name: 'ic_info',
-};
 
 export const AddonsPage = (): JSX.Element => {
   const router = useRouter();
 
+  const shirtCleaningAddon = useStore($shirtCleaning);
+  const kitchen = useStore($kitchen);
+  const bathroom = useStore($bathroom);
+  const pets = useStore($pets);
+  const extra = useStore($extra);
+
+  const numberOfRooms = useStore($numberOfRooms);
+  const numberOfBathRooms = useStore($numberOfBathRooms);
+
+  const time = useStore($time);
+  const price = useStore($price);
+
   return (
     <div className={s.container}>
-      <header className={s.header}>
-        <div className={s.row}>
-          <Button
-            onClick={router.back}
-            content='icon'
-            shape='square'
-            className={s.back}
-            icon={prevIcon}
-          />
-
-          <div className={s.description}>
-            <div className={s.serviceName}>
-              <Heading text='Стандартная уборка' type='h3' />
-              <Icon {...infoIcon} />
-            </div>
-
-            <Text text='1 Комната, 1 Санузел' />
-          </div>
-        </div>
-      </header>
+      <Header
+        text={`${numberOfRooms} Комната, ${numberOfBathRooms} Санузел `}
+      />
 
       <main>
         <Heading text='Дополнительные услуги' className={s.heading} type='h2' />
 
-        <section className={s.section}>
-          <Heading text='Кухня' type='h3' className={s.subHeading} />
-        </section>
+        <AddonsSection
+          title='Кухня'
+          addons={kitchen}
+          setSelected={setAddonSelected}
+          className={s.section}
+        />
+
+        <Addon
+          addon={shirtCleaningAddon}
+          selected={shirtCleaningAddon.selected}
+          setSelected={setAddonSelected(shirtCleaningAddon.id)}
+          className={s.addon}
+          view='horizontal'
+        />
+
+        <AddonsSection
+          title='Санузел'
+          addons={bathroom}
+          setSelected={setAddonSelected}
+          className={s.section}
+        />
+
+        <AddonsSection
+          title='Работы с питомцами'
+          addons={pets}
+          setSelected={setAddonSelected}
+          className={s.section}
+        />
+
+        <AddonsSection
+          title='Дополнительные услуги'
+          addons={extra}
+          setSelected={setAddonSelected}
+          className={s.section}
+        />
+
+        <PriceButton
+          onClick={() => router.push('/info')}
+          time={time}
+          price={price}
+          className={s.nextButton}
+        />
       </main>
     </div>
   );

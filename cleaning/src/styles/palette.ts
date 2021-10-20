@@ -2,14 +2,16 @@ import { css } from '@emotion/css';
 
 export const palette = css`
   :root {
+    --heading: #35373e;
     --independence: #4d526b;
     --text: #8f8c8a;
     --caption: #a4a8bc;
     --arsenic: #414145;
 
     --white: #ffffff;
-    --pale-silver: #cbbeb2;
     --white-04: rgba(255, 255, 255, 0.4);
+    --border: #f2f2f2;
+    --pale-silver: #cbbeb2;
 
     --azure-white: #f2eedc;
 

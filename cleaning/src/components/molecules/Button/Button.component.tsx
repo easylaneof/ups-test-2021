@@ -30,7 +30,7 @@ export const Button = (props: ButtonProps): JSX.Element => {
       return <Text text={props.text} />;
     }
 
-    if (!props.content || props.content === 'general') {
+    if (!props.content || props.content === 'default') {
       return props.children;
     }
 

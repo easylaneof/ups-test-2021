@@ -16,5 +16,5 @@ export const Default = Template.bind({});
 Default.args = {
   content: 'text',
   text: 'Text button',
-  shape: 'general',
+  shape: 'default',
 };

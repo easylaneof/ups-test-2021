@@ -2,11 +2,23 @@ import React, { useState } from 'react';
 
 import { useRouter } from 'next/router';
 
+import { useStore } from 'effector-react';
+
 import { Text } from 'components/atoms/Text';
 import { Heading } from 'components/atoms/Heading';
 import { Icon, IconProps } from 'components/atoms/Icon';
 import { Button } from 'components/molecules/Button';
 import { NumberSelect } from 'components/organisms/NumberSelect';
+
+import { $price, $time } from '../../orders.model';
+import {
+  $numberOfBathRooms,
+  $numberOfRooms,
+  setNumberOfBathRooms,
+  setNumberOfRooms,
+} from '../../flat.model';
+
+import { PriceButton } from '../../molecules/PriceButton';
 
 import * as s from './DescribeFlat.styles';
 
@@ -28,10 +40,11 @@ const mock = () => {};
 export const DescribeFlatPage = (): JSX.Element => {
   const router = useRouter();
 
-  const [numberOfRooms, setNumberOfRooms] = useState<null | number>(null);
-  const [numberOfBathRooms, setNumberOfBathRooms] = useState<null | number>(
-    null
-  );
+  const numberOfRooms = useStore($numberOfRooms);
+  const numberOfBathRooms = useStore($numberOfBathRooms);
+
+  const price = useStore($price);
+  const time = useStore($time);
 
   return (
     <main className={s.container}>
@@ -83,11 +96,12 @@ export const DescribeFlatPage = (): JSX.Element => {
       </div>
 
       {numberOfBathRooms && numberOfRooms && (
-        <Button onClick={mock} className={s.nextButton}>
-          <Text text='≈ 3 Часа' className={s.timeEstimation} />
-          <Heading type='h3' text='далее' className={s.next} />
-          <Heading type='h3' text='650 ₽' className={s.price} />
-        </Button>
+        <PriceButton
+          onClick={() => router.push('/addons')}
+          time={time}
+          price={price}
+          className={s.nextButton}
+        />
       )}
     </main>
   );

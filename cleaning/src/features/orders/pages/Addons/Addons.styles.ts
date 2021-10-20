@@ -10,80 +10,24 @@ export const container = css`
   }
 `;
 
-export const header = css`
-  height: 135px;
-
-  display: flex;
-  align-items: flex-end;
-
-  padding: 0 20px 20px 20px;
-
-  margin-bottom: 24px;
-
-  background-color: #f8f8ff;
-`;
-
-export const row = css`
-  display: flex;
-  align-items: center;
-`;
-
-export const back = css`
-  background-color: var(--ice-blue);
-  margin-right: 20px;
-
-  svg {
-    fill: none;
-    stroke: var(--blue);
-  }
-`;
-
-export const description = css`
-  display: flex;
-  flex-direction: column;
-
-  h3 {
-    color: var(--independence);
-    margin-bottom: 5px;
-  }
-
-  span {
-    color: var(--caption);
-    font-size: 12px;
-  }
-
-  svg {
-    fill: var(--blue);
-  }
-`;
-
-export const serviceName = css`
-  display: flex;
-  align-items: center;
-
-  h3 {
-    margin-right: 5px;
-    margin-bottom: 0;
-  }
-`;
-
 export const heading = css`
   color: var(--independence);
   text-align: center;
   margin-bottom: 25px;
 `;
 
-export const subHeading = css`
-  color: var(--independence);
+export const section = css`
+  margin-bottom: 35px;
 `;
 
-export const section = css`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+export const addon = css`
+  margin-bottom: 35px;
   width: 100%;
+`;
 
-  h3 {
-    font-size: 14px;
-  }
+export const nextButton = css`
+  margin-top: 45px;
+  margin-bottom: 25px;
+
+  width: calc(100% - 40px);
 `;
