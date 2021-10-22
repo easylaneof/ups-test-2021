@@ -9,8 +9,8 @@ export const imageContainer = css`
 `;
 
 export const image = css`
-  max-width: 400px;
-  max-height: 400px;
+  max-width: 350px;
+  max-height: 350px;
 `;
 
 export const heading = css`
