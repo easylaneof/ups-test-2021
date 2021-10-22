@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Icon, IconName, IconProps } from 'components/atoms/Icon';
+import { Icon, IconProps } from 'components/atoms/Icon';
 import { Heading } from 'components/atoms/Heading';
 
 import * as s from './CleanersSearch.styles';

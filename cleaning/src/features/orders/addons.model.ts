@@ -112,6 +112,7 @@ export const $selectedAddons = $addons.map((addons) =>
   addons.filter((addon) => addon.selected)
 );
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
 export const $shirtCleaning: Store<EnhancedAddon> = $addons.map((addons) =>
   addons.find((addon) => addon.id === 'shirt_cleaning')

@@ -48,7 +48,9 @@ import {
 
 import * as s from './Info.styles';
 
-const mock = () => {};
+const mock = () => {
+  //
+};
 
 const mapIcon: IconProps = {
   width: 20,

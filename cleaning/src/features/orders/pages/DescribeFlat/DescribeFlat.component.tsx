@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { useRouter } from 'next/router';
 
@@ -35,7 +35,9 @@ const ticketIcon: IconProps = {
   name: 'ic_lottery_ticket',
 };
 
-const mock = () => {};
+const mock = () => {
+  //
+};
 
 export const DescribeFlatPage = (): JSX.Element => {
   const router = useRouter();

@@ -65,7 +65,6 @@ export const slide = css`
   min-height: 100vh;
 `;
 
-
 export const firstSlide = {
   className: css`
     background: var(--blue);

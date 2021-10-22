@@ -1,3 +1,5 @@
+import React from 'react';
+
 import '../styles/main';
 
 import 'swiper/css';

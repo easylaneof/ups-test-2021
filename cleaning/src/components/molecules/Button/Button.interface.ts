@@ -1,6 +1,6 @@
 import React from 'react';
 
-type IconProps = any;
+import { IconProps } from 'components/atoms/Icon';
 
 export type ButtonShape = 'default' | 'square';
 

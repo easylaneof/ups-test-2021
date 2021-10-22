@@ -9,5 +9,5 @@ export const convertTime = (time: number): string => {
 };
 
 export const convertPrice = (price: number): string => {
-  return `${price} ₽`
-}
+  return `${price} ₽`;
+};

@@ -92,7 +92,6 @@ export const radioButtonClassNames = Object.entries(activeColors).reduce(
   {} as Record<AddonCategory, string>
 );
 
-
 export const image = css`
   max-width: 120px;
   max-height: 70px;

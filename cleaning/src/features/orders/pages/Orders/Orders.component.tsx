@@ -1,3 +1,5 @@
+import React from 'react';
+
 import type { NextPage } from 'next';
 
 import { useRouter } from 'next/router';
@@ -17,7 +19,9 @@ import { $completed } from '../../orders.model';
 
 import * as s from './Orders.styles';
 
-const mock = () => {};
+const mock = () => {
+  //
+};
 
 const lightningIcon: IconProps = {
   width: 20,

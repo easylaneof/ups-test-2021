@@ -34,7 +34,7 @@ export const OrderPage = (): JSX.Element => {
     if (!completed) {
       router.push('/orders');
     }
-  }, [completed]);
+  }, [completed, router]);
 
   return (
     <div className={s.container}>

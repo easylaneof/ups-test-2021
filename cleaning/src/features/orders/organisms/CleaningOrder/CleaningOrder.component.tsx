@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { cx } from "@emotion/css";
+import { cx } from '@emotion/css';
 
 import { Heading } from 'components/atoms/Heading';
 import { Text } from 'components/atoms/Text';

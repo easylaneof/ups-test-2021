@@ -50,10 +50,7 @@ export const Addon = ({
         <div className={s.info}>
           <Text
             text={convertPrice(addon.price)}
-            className={cx(
-              s.price,
-              s.priceClassNames[addon.category]
-            )}
+            className={cx(s.price, s.priceClassNames[addon.category])}
           />
           <Text text={`${addon.duration} мин.`} className={s.time} />
         </div>

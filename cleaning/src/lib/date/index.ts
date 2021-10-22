@@ -16,7 +16,7 @@ export const getAllDaysUntilEndOfMonth = (): Date[] => {
 
   const result: Date[] = [];
 
-  let iterationDate = new Date();
+  const iterationDate = new Date();
   while (iterationDate.getDate() < lastDayInMonth.getDate()) {
     result.push(new Date(iterationDate));
     iterationDate.setDate(iterationDate.getDate() + 1);

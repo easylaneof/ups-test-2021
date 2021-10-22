@@ -12,7 +12,9 @@ const referral =
   'Они получат по 500 рублей на первый заказ. ' +
   'А вы - скидку 500 рублей сразу после их уборки';
 
-const mock = () => {};
+const mock = () => {
+  //
+};
 
 export const BonusPage = (): JSX.Element => {
   return (

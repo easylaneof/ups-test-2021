@@ -2,8 +2,6 @@ import React from 'react';
 
 import { cx } from '@emotion/css';
 
-import { SwiperSlide } from 'swiper/react';
-
 import type { IconProps } from 'components/atoms/Icon';
 import { Heading } from 'components/atoms/Heading';
 import { Text } from 'components/atoms/Text';

@@ -1,4 +1,4 @@
-import { createEvent, createStore, restore } from 'effector';
+import { createEvent, restore } from 'effector';
 
 export const setNumberOfRooms = createEvent<number>();
 export const $numberOfRooms = restore(setNumberOfRooms, null);
