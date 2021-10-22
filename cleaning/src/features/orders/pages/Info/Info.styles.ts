@@ -46,6 +46,10 @@ export const stageContainer = css`
   align-items: center;
 
   padding-bottom: 100px;
+
+  .swiper-slide {
+    width: unset;
+  }
 `;
 
 export const map = css`
