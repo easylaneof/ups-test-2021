@@ -10,7 +10,7 @@ import { Icon, IconProps } from 'components/atoms/Icon';
 import { Button } from 'components/molecules/Button';
 import { NumberSelect } from 'components/organisms/NumberSelect';
 
-import { $price, $time } from '../../orders.model';
+import { $price, $duration } from '../../orders.model';
 import {
   $numberOfBathRooms,
   $numberOfRooms,
@@ -44,7 +44,7 @@ export const DescribeFlatPage = (): JSX.Element => {
   const numberOfBathRooms = useStore($numberOfBathRooms);
 
   const price = useStore($price);
-  const time = useStore($time);
+  const duration = useStore($duration);
 
   return (
     <main className={s.container}>
@@ -98,7 +98,7 @@ export const DescribeFlatPage = (): JSX.Element => {
       {numberOfBathRooms && numberOfRooms && (
         <PriceButton
           onClick={() => router.push('/addons')}
-          time={time}
+          time={duration}
           price={price}
           className={s.nextButton}
         />

@@ -20,7 +20,7 @@ import {
   setAddonSelected,
 } from '../../addons.model';
 import { $numberOfBathRooms, $numberOfRooms } from '../../flat.model';
-import { $time, $price } from '../../orders.model';
+import { $duration, $price } from '../../orders.model';
 
 import * as s from './Addons.styles';
 
@@ -36,7 +36,7 @@ export const AddonsPage = (): JSX.Element => {
   const numberOfRooms = useStore($numberOfRooms);
   const numberOfBathRooms = useStore($numberOfBathRooms);
 
-  const time = useStore($time);
+  const duration = useStore($duration);
   const price = useStore($price);
 
   return (
@@ -86,7 +86,7 @@ export const AddonsPage = (): JSX.Element => {
 
         <PriceButton
           onClick={() => router.push('/info')}
-          time={time}
+          time={duration}
           price={price}
           className={s.nextButton}
         />

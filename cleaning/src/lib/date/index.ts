@@ -1,5 +1,9 @@
+export const getMonthName = (date: Date): string => {
+  return date.toLocaleDateString('default', { month: 'long' });
+};
+
 export const getCurrentMonth = (): string => {
-  return new Date().toLocaleDateString('default', { month: 'long' });
+  return getMonthName(new Date());
 };
 
 export const getCurrentYear = (): string => {
@@ -13,10 +17,12 @@ export const getAllDaysUntilEndOfMonth = (): Date[] => {
   const result: Date[] = [];
 
   let iterationDate = new Date();
-  while (iterationDate.getDate() <= lastDayInMonth.getDate()) {
-    result.push(iterationDate);
+  while (iterationDate.getDate() < lastDayInMonth.getDate()) {
+    result.push(new Date(iterationDate));
     iterationDate.setDate(iterationDate.getDate() + 1);
   }
+
+  result.push(new Date(lastDayInMonth));
 
   return result;
 };

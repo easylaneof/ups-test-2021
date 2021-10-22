@@ -24,14 +24,19 @@ const infoIcon: IconProps = {
   name: 'ic_info',
 };
 
-export const Header = ({ text, className }: HeaderProps): JSX.Element => {
+export const Header = ({
+  text,
+  className,
+  mainText = 'Стандартная уборка',
+  onBack,
+}: HeaderProps): JSX.Element => {
   const router = useRouter();
 
   return (
     <header className={cx(s.header, className)}>
       <div className={s.row}>
         <Button
-          onClick={router.back}
+          onClick={onBack ?? router.back}
           content='icon'
           shape='square'
           className={s.back}
@@ -40,7 +45,7 @@ export const Header = ({ text, className }: HeaderProps): JSX.Element => {
 
         <div className={s.description}>
           <div className={s.serviceName}>
-            <Heading text='Стандартная уборка' type='h3' />
+            <Heading text={mainText} type='h3' />
             <Icon {...infoIcon} />
           </div>
 

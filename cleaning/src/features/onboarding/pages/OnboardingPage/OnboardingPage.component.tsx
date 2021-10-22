@@ -5,8 +5,7 @@ import { useRouter } from 'next/router';
 
 import { cx } from '@emotion/css';
 
-import { Controller, Pagination } from 'swiper';
-import { Swiper as SwiperClass } from 'swiper/types';
+import { Controller, Pagination, Swiper as SwiperClass } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { Slide } from '../../templates/Slide';

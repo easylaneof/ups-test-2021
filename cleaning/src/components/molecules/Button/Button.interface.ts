@@ -4,7 +4,7 @@ type IconProps = any;
 
 export type ButtonShape = 'default' | 'square';
 
-export type ButtonContent = 'default' | 'icon' | 'text';
+export type ButtonContent = 'default' | 'icon' | 'text' | 'none';
 
 type DefaultContent = {
   content?: 'default';
@@ -21,10 +21,15 @@ type TextContent = {
   text: string;
 };
 
+type NoneContent = {
+  content: 'none';
+};
+
 export type ButtonProps = (
   | DefaultContent
   | IconContent
   | TextContent
+  | NoneContent
 ) & {
   onClick: React.MouseEventHandler;
 

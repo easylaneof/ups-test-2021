@@ -10,6 +10,9 @@ export const header = css`
 
   margin-bottom: 24px;
 
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+
   background-color: #f8f8ff;
 `;
 

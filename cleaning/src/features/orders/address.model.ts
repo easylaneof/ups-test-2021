@@ -1,4 +1,4 @@
-import { createEvent, restore } from 'effector';
+import { combine, createEvent, restore } from 'effector';
 
 export const setCity = createEvent<string>();
 export const $city = restore(setCity, '');
@@ -20,3 +20,13 @@ export const $entrance = restore(setEntrance, '');
 
 export const setComment = createEvent<string>();
 export const $comment = restore(setComment, '');
+
+export const $address = combine({
+  city: $city,
+  street: $street,
+  house: $house,
+  flat: $flat,
+  building: $building,
+  entrance: $entrance,
+  comment: $comment,
+});

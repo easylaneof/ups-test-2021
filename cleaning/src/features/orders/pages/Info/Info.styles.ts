@@ -44,6 +44,8 @@ export const stageContainer = css`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  padding-bottom: 100px;
 `;
 
 export const map = css`
@@ -123,7 +125,85 @@ export const title = css`
   text-align: center;
 `;
 
-export const date = css`
+export const month = css`
   font-size: 14px;
   margin-bottom: 20px;
+`;
+
+export const swiper = css`
+  width: 100%;
+
+  margin-bottom: 32px;
+
+  position: relative;
+
+  ::after {
+    content: '';
+
+    pointer-events: none;
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    height: 60px;
+    width: 60px;
+
+    padding: 1px;
+
+    border: 3px solid var(--blue);
+    border-radius: 15px;
+
+    z-index: 5;
+  }
+`;
+
+export const date = css`
+  width: 60px;
+  height: 60px;
+  background: #edf0ff;
+  border-radius: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const day = css`
+  color: var(--blue);
+`;
+
+export const payButton = css`
+  width: 100%;
+  background: #edf0ff;
+  border-radius: 13px;
+
+  padding: 20px;
+
+  span {
+    color: var(--blue);
+  }
+`;
+
+export const blackPayButton = css`
+  width: 100%;
+  background: var(--black);
+  border-radius: 13px;
+
+  margin-bottom: 10px;
+
+  height: 60px;
+`;
+
+export const applePay = css`
+  background-image: url('/apple_pay.png');
+  background-size: 100%;
+  background-position: center;
+`;
+
+export const googlePay = css`
+  background-image: url('/google_pay.png');
+  background-size: 100%;
+  background-position: center;
 `;

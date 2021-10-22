@@ -1,12 +1,16 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 
 import { useStore } from 'effector-react';
 
 import { cx } from '@emotion/css';
 
+import { useRouter } from 'next/router';
+
+import { Swiper as SwiperClass } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 import { convertPrice, convertTime } from 'lib/format';
+import { getAllDaysUntilEndOfMonth } from 'lib/date';
 
 import { Text } from 'components/atoms/Text';
 import { Heading } from 'components/atoms/Heading';
@@ -17,15 +21,15 @@ import { Button } from 'components/molecules/Button';
 import { Header } from 'components/organisms/Header';
 
 import { $numberOfRooms, $numberOfBathRooms } from '../../flat.model';
-import { $time, $price } from '../../orders.model';
 import {
-  $building,
-  $city,
-  $comment,
-  $entrance,
-  $flat,
-  $house,
-  $street,
+  $duration,
+  $price,
+  complete,
+  setDate,
+  setTime,
+} from '../../orders.model';
+import {
+  $address,
   setBuilding,
   setCity,
   setComment,
@@ -36,10 +40,13 @@ import {
 } from '../../address.model';
 
 import { $tabIndex, setTabIndex, $isFirstStageValid } from './Info.model';
-import { getCurrentMonthAndYear } from './Info.utils';
+import {
+  getCurrentMonthAndYear,
+  getDateAndDay,
+  timePoints,
+} from './Info.utils';
 
 import * as s from './Info.styles';
-import { getAllDaysUntilEndOfMonth } from '../../../../lib/date';
 
 const mock = () => {};
 
@@ -51,13 +58,8 @@ const mapIcon: IconProps = {
 };
 
 const FirstStage = () => {
-  const city = useStore($city);
-  const street = useStore($street);
-  const house = useStore($house);
-  const flat = useStore($flat);
-  const building = useStore($building);
-  const entrance = useStore($entrance);
-  const comment = useStore($comment);
+  const { city, street, house, flat, building, entrance, comment } =
+    useStore($address);
 
   const isValid = useStore($isFirstStageValid);
 
@@ -71,6 +73,7 @@ const FirstStage = () => {
       </Button>
 
       <Text text='Или' className={s.or} />
+
       <TextInput
         value={city}
         setValue={setCity}
@@ -122,8 +125,20 @@ const FirstStage = () => {
 };
 
 const SecondStage = () => {
+  const [dateSwiper, setDateSwiper] = useState<SwiperClass | null>(null);
+  const [timeSwiper, setTimeSwiper] = useState<SwiperClass | null>(null);
+
   const date = useMemo(() => getCurrentMonthAndYear(), []);
   const dates = useMemo(() => getAllDaysUntilEndOfMonth(), []);
+
+  const onSlideNext = () => {
+    if (!dateSwiper || !timeSwiper) return;
+
+    setDate(dates[dateSwiper.activeIndex]);
+    setTime(timePoints[timeSwiper.activeIndex]);
+
+    setTabIndex(2);
+  };
 
   return (
     <div className={s.stageContainer}>
@@ -133,15 +148,91 @@ const SecondStage = () => {
         className={s.title}
       />
 
-      <Heading text={date} type='h3' className={s.date} />
+      <Heading text={date} type='h3' className={s.month} />
 
-      <Swiper slidesPerView={3} spaceBetween={10}>
+      <Swiper
+        spaceBetween={10}
+        slidesPerView='auto'
+        centeredSlides
+        className={s.swiper}
+        resistanceRatio={0}
+        onSwiper={setDateSwiper}
+      >
         {dates.map((d) => (
           <SwiperSlide key={d.toString()}>
-
+            <div className={s.date}>
+              <Text text={getDateAndDay(d)} className={s.day} />
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>
+
+      <Swiper
+        spaceBetween={10}
+        slidesPerView='auto'
+        centeredSlides
+        className={s.swiper}
+        resistanceRatio={0}
+        onSwiper={setTimeSwiper}
+      >
+        {timePoints.map((time) => (
+          <SwiperSlide key={time}>
+            <div className={s.date}>
+              <Text text={time} className={s.day} />
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+
+      <Button
+        onClick={onSlideNext}
+        content='text'
+        text='далее'
+        className={s.nextButton}
+      />
+    </div>
+  );
+};
+
+const ThirdStage = () => {
+  const router = useRouter();
+
+  const next = async () => {
+    complete();
+    await router.push('/order');
+  };
+
+  return (
+    <div className={s.stageContainer}>
+      <Heading text='Выберите способ оплаты' type='h2' className={s.title} />
+
+      <Button
+        onClick={next}
+        content='text'
+        text='Наличными клинеру'
+        className={cx(s.payButton, s.mb)}
+      />
+
+      <Button
+        onClick={next}
+        content='text'
+        text='Картой клинеру'
+        className={s.payButton}
+      />
+
+      <Text text='Или' className={s.or} />
+
+      <Button
+        onClick={next}
+        className={cx(s.blackPayButton, s.applePay)}
+        content='none'
+      />
+
+      <Button
+        onClick={next}
+        className={cx(s.blackPayButton, s.googlePay)}
+        content='none'
+      />
     </div>
   );
 };
@@ -151,14 +242,14 @@ export const InfoPage = (): JSX.Element => {
 
   const numberOfRooms = useStore($numberOfRooms);
   const numberOfBathRooms = useStore($numberOfBathRooms);
-  const time = useStore($time);
+  const duration = useStore($duration);
   const price = useStore($price);
 
   return (
     <div className={s.container}>
       <Header
         text={`${numberOfRooms} Комната, ${numberOfBathRooms} Санузел, ${convertTime(
-          time
+          duration
         )}, ${convertPrice(price)}`}
       />
 
@@ -182,6 +273,7 @@ export const InfoPage = (): JSX.Element => {
 
         {tabIndex === 0 && <FirstStage />}
         {tabIndex === 1 && <SecondStage />}
+        {tabIndex === 2 && <ThirdStage />}
       </main>
     </div>
   );

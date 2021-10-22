@@ -29,5 +29,5 @@ export const nextButton = css`
   margin-top: 45px;
   margin-bottom: 25px;
 
-  width: calc(100% - 40px);
+  width: 100%;
 `;

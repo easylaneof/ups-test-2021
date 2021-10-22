@@ -108,6 +108,10 @@ export const $addons = createStore<EnhancedAddon[]>(
   }))
 );
 
+export const $selectedAddons = $addons.map((addons) =>
+  addons.filter((addon) => addon.selected)
+);
+
 // @ts-ignore
 export const $shirtCleaning: Store<EnhancedAddon> = $addons.map((addons) =>
   addons.find((addon) => addon.id === 'shirt_cleaning')
