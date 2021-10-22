@@ -18,6 +18,7 @@ const Template: Story<AddonProps> = (props) => {
 export const Default = Template.bind({});
 Default.args = {
   addon: {
+    id: "1",
     title: 'Помыть плиту',
     price: 320,
     duration: 20,
@@ -29,6 +30,7 @@ Default.args = {
 export const Horizontal = Template.bind({});
 Horizontal.args = {
   addon: {
+    id: "1",
     title: 'Помыть плиту',
     price: 320,
     duration: 20,
